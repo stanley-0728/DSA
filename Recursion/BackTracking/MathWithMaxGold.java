@@ -2,14 +2,15 @@ package Recursion.BackTracking;
 
 public class MathWithMaxGold {
   public static void main(String[] args) {
-    int[][] arr= {
-      {0,6,0},
-      {5,8,7},
-      {0,9,0}
+    int[][] arr = {
+        { 0, 6, 0 },
+        { 5, 8, 7 },
+        { 0, 9, 0 }
     };
     System.out.println(getMaximumGold(arr));
 
   }
+
   static int getMaximumGold(int[][] arr) {
     int maxGold = 0;
     boolean[][] visited = new boolean[arr.length][arr[0].length];
@@ -24,7 +25,8 @@ public class MathWithMaxGold {
     }
     return maxGold;
   }
- static int backTrack(int row, int col, int[][] arr, boolean[][] visited) {
+
+  static int backTrack(int row, int col, int[][] arr, boolean[][] visited) {
     // Check bounds and visited status
     if (row < 0 || col < 0 || row >= arr.length || col >= arr[0].length || arr[row][col] == 0 || visited[row][col]) {
       return 0;
