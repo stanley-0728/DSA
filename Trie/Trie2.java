@@ -1,4 +1,3 @@
-package Trie;
 
 public class Trie2 {
   public class Node {
@@ -59,12 +58,9 @@ public class Trie2 {
       if (node.containsKey(word.charAt(i))) {
         node = node.get(word.charAt(i));
       } else {
-        System.out.println(word.charAt(i));
-
         return 0;
       }
     }
-    System.out.println(node.cntEndWith);
     return node.cntEndWith;
   }
 
@@ -74,7 +70,6 @@ public class Trie2 {
       if (node.containsKey(word.charAt(i))) {
         node = node.get(word.charAt(i));
       } else {
-
         return 0;
       }
     }

@@ -1,4 +1,3 @@
-package Trie;
 
 /*
  * Time Complexity:
@@ -12,6 +11,7 @@ public class Trie {
   public class Node {
     Node[] links = new Node[26];
     boolean flag = false;
+    int childCount = 0;
 
     boolean containsKey(char ch) {
       return links[ch - 'a'] != null;
@@ -47,6 +47,7 @@ public class Trie {
         // Create a new node for
         // the letter if not present
         node.put(word.charAt(i), new Node());
+        node.childCount++;
       }
       // Move to the next node
       node = node.get(word.charAt(i));
@@ -85,4 +86,36 @@ public class Trie {
     // The prefix is found in the Trie
     return true;
   }
+
+  public boolean checkPrefix(String prefix) {
+    Node node = root;
+    boolean flag = true;
+    for (int i = 0; i < prefix.length(); i++) {
+      if (node.containsKey(prefix.charAt(i))) {
+        node = node.get(prefix.charAt(i));
+        flag = flag & node.isEnd();
+      } else
+        return false;
+    }
+    return flag;
+  }
+
+  public String findLongestCommonPrefix(String s) {
+    Node curr = root;
+    int i = 0;
+    while (curr.childCount == 1 && !curr.isEnd()) {
+      int idx = s.charAt(i) - 'a';
+      i++;
+      curr = curr.links[idx];
+    }
+    System.out.println(i);
+    return s.substring(0, i);
+  }
+
+  public void buildTree(String[] s, Trie trie) {
+    for (String i : s) {
+      trie.insert(i);
+    }
+  }
+  
 }
