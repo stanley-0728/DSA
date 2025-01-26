@@ -1,4 +1,3 @@
-package Trie;
 
 public class Basic {
   public static void main(String[] args) {
@@ -13,13 +12,13 @@ public class Basic {
     // trie.insert("strike");
 
     // System.out.println("Search if Strawberry exists in trie: " +
-    //     (trie.search("strawberry") ? "True" : "False"));
+    // (trie.search("strawberry") ? "True" : "False"));
 
     // System.out.println("Search if Strike exists in trie: " +
-    //     (trie.search("strike") ? "True" : "False"));
+    // (trie.search("strike") ? "True" : "False"));
 
     // System.out.println("If words in Trie start with Stri: " +
-    //     (trie.startsWith("stri") ? "True" : "False"));
+    // (trie.startsWith("stri") ? "True" : "False"));
 
     /*
      * Implement Trie - II
@@ -33,19 +32,34 @@ public class Basic {
      * Erase (word): Delete one occurrence of the string word from the Trie.
      */
 
-     Trie2 trie = new Trie2();
-    trie.insert("apple");
-    trie.insert("app");
-    System.out.println("Inserting strings 'apple', 'app' into Trie");
-    System.out.print("Count Words Equal to 'apple': ");
-    System.out.println(trie.countWordsEqualTo("apple"));
-    System.out.print("Count Words Starting With 'app': ");
-    System.out.println(trie.countWordsStartingWith("app"));
-    System.out.println("Erasing word 'app' from trie");
-    trie.erase("app");
-    System.out.print("Count Words Equal to 'apple': ");
-    System.out.println(trie.countWordsEqualTo("apple"));
-    System.out.print("Count Words Starting With 'apple': ");
-    System.out.println(trie.countWordsStartingWith("app"));
+    // Trie2 trie = new Trie2();
+    // trie.insert("apple");
+    // trie.insert("app");
+    // System.out.println("Inserting strings 'apple', 'app' into Trie");
+    // System.out.print("Count Words Equal to 'apple': ");
+    // System.out.println(trie.countWordsEqualTo("apple"));
+    // System.out.print("Count Words Starting With 'app': ");
+    // System.out.println(trie.countWordsStartingWith("app"));
+    // System.out.println("Erasing word 'app' from trie");
+    // trie.erase("app");
+    // System.out.print("Count Words Equal to 'apple': ");
+    // System.out.println(trie.countWordsEqualTo("apple"));
+    // System.out.print("Count Words Starting With 'apple': ");
+    // System.out.println(trie.countWordsStartingWith("app"));
+
+    // String[] strs = { "fal","faa","fa" };
+    // Trie trie = new Trie();
+    // trie.buildTree(strs, trie);
+    // System.out.println(trie.findLongestCommonPrefix(strs[2]));
+    Trie3 trie = new Trie3();
+    int[] arr ={6 ,6  ,6 ,8 ,5 ,6};
+    for(int i : arr){
+      trie.insert(i);
+    }
+    int max=0;
+    for(int i : arr){
+      max= Math.max(max, trie.getMax(i));
+    }
+    System.out.println(max);
   }
 }
