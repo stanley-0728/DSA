@@ -2,9 +2,11 @@ package Tree;
 
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 class TreeNode {
 
@@ -153,7 +155,8 @@ public class BFS {
 
       for (int i = 0; i < levelSize; i++) {
         TreeNode node = queue.poll();
-        if(i==levelSize-1) ans.add(node.val)
+        if (i == levelSize - 1)
+          ans.add(node.val);
         if (node.left != null)
           queue.add(node.left);
         if (node.right != null)
@@ -236,5 +239,40 @@ public class BFS {
     if (l != 0)
       return l;
     return level(node.right, x, level + 1);
+  }
+
+  public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    Set<String> wordSet = new HashSet<>(wordList);
+
+    if (!wordSet.contains(endWord))
+      return 0;
+    int length = 0;
+    Queue<String> queue = new LinkedList<>();
+    Set<String> visited = new HashSet<>();
+    queue.add(beginWord);
+    visited.add(beginWord);
+    while (!queue.isEmpty()) {
+      int size = queue.size();
+      length++;
+      for (int i = 0; i < size; i++) {
+        String current = queue.poll();
+        for (int j = 0; j < current.length(); j++) {
+          char[] temp = current.toCharArray();
+          for (char ch = 'a'; ch <= 'z'; ch++) {
+            temp[j] = ch;
+            String newWord = new String(temp);
+            if (newWord.equals(endWord)) {
+              return length + 1;
+            }
+            if (wordSet.contains(newWord) && !visited.contains(newWord)) {
+              System.out.println(newWord);
+              queue.offer(newWord);
+              visited.add(newWord);
+            }
+          }
+        }
+      }
+    }
+    return 0;
   }
 }
