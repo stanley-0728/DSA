@@ -36,6 +36,12 @@ class TreeNode {
   }
 }
 
+class Node {
+  int val;
+  int left;
+  int right;
+}
+
 public class DFS {
   int diameter = Integer.MIN_VALUE;
   int counter = 0;
@@ -250,7 +256,7 @@ public class DFS {
     }
     helperSum(node.left, currentSum, target, map);
     helperSum(node.right, currentSum, target, map);
-    map.put(currentSum,map.get(currentSum) -1)
+    map.put(currentSum, map.get(currentSum) - 1);
   }
 
   public TreeNode buildTree(int[] preorder, int[] inorder) {
@@ -366,12 +372,14 @@ public class DFS {
     return helper6(root, k, set);
   }
 
-  boolean helper6(TreeNode node,int k,HashSet set){
-    if(node==null) return false;
+  boolean helper6(TreeNode node, int k, HashSet set) {
+    if (node == null)
+      return false;
 
-    if(set.contains(k-node.val)) return true;
+    if (set.contains(k - node.val))
+      return true;
     set.add(node.val);
-    return helper6(node.left, k, set) || helper6(node.right, k, set)
+    return helper6(node.left, k, set) || helper6(node.right, k, set);
   }
 
   public boolean isValidBST(TreeNode root) {
@@ -390,9 +398,9 @@ public class DFS {
 
   Stack<TreeNode> stack = new Stack<>();
 
-  public BSTIterator(TreeNode root) {
-        pushAll(root);
-    }
+  public void BSTIterator(TreeNode root) {
+    pushAll(root);
+  }
 
   public int next() {
     TreeNode temp = stack.pop();

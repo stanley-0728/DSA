@@ -1,0 +1,15 @@
+There are Certain Patterns in Dp .
+Fibonacci Patterns
+SubSet Patterns
+Grid Patterns
+Longest Common SubSquences 
+longest Increase SubSquences
+Matrix Chain Multiplication 
+String Patterns
+
+In all the patterns we will follow three rules 
+first we go with recursion we follow three rules over there 
+calculate time complexity and space complexity 
+Then do memozization over there.
+
+With this we can do tabuluation and then space optimatization.
