@@ -1,0 +1,15 @@
+This is the toughest Pattern  Matric chain Multiplication / Partition Dp.
+
+Whenever you are givin that u need to solve in a particular way / pattern.
+e.g (1+2)+(3*5) = 16 or (1+2+3)*5 = 30 you see if i solve in one way i am getting one answer or in another i am getting another answer. Whenever you see these kind of patterns that's where you need to apply partition DP.
+
+Till now what we were doing in grids 1d 2d stock subsquence and strings and lis we followed a pattern but for this it will be different.
+
+For every problem in this pattern you will given array 
+i and j are start and end point of the array let us say i=0 and j= len-1
+let k be the partition  f(i,j) = f(i,k) and f(k+1,j)
+
+Rules 
+1. start with enitre block/array with i and j.
+2. Try all partitions.Run a loop to try partitions 
+3.Return best two partitions

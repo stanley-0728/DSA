@@ -1,3 +1,5 @@
+Those who cannot remember past are condemned to repeat it.
+
 There are Certain Patterns in Dp .
 Fibonacci Patterns
 SubSet Patterns
