@@ -1,0 +1,31 @@
+How do you convert recursion into tabuluation(Bottom up)
+
+
+Always go from base case  to the requried ans which is bottom up.
+Go from required answer to base case which top down in recursion which we followed.
+
+Always in recursion whatever dp array you are using intialize it first. So for fibo we can see dp[0] =0;dp[1]=1;
+Now you need to check at what values you can start considering your base is set and till what value you can go.
+
+Then you look for recurence relationship just copy up everything instead of function replace it with dp.
+
+
+Now can you optimize the space further .
+Whenever you find i-1 and i-2 just see the pattern in fibo also we require only previous two elements so why are we using an array over here . If you two varaibles to store last two previous values and keep over riding let prev1 and prev2 and i is running when i reaches n+1 and prev is at n and prev2 is at n-1 so your answer lies in prev.
+
+
+So for the all the problems we would be seeing previous and current for space optimatization.
+
+
+How did you find dp problems .
+Coun no of ways 
+do something and find min or max output 
+whenever try out all possible ways comes in 
+either we need to count or give best output use recursion
+
+
+Rules 
+1. Always try to represent problem in terms of index
+2. Do possible stuff on that index according to problem statement.
+3. Sum up all stuff Count all ways.
+Minum all stuff .

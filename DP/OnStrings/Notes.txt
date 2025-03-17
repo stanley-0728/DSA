@@ -1,0 +1,10 @@
+This is dp on Strings 
+you can see problems related to Longest Common SubSquence also motly related to comparisons,replaces,edit patterns we will be solving.
+
+Rules
+1. express in terms of  f(index1,index2) where index1 represent string s1 and index 2 string s2. 
+2. expore all possibility on that index.
+3. take the best among them.
+4.Base case
+
+For tabulation we need to shift indexes to 1based 
