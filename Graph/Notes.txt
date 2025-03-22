@@ -1,0 +1,7 @@
+Degree of a node in undirected graph is total no of edges it has .
+Property of undirected of graph
+Total degree of undirected graph is 2*E where E is the total no.of edges because every node is connected with 2 nodes.
+
+Directed Graph
+Indegree means no.of incoming edges 
+Outdegree means no.of outgoing edges
