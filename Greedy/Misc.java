@@ -633,7 +633,7 @@ public class Misc {
   public int jump(int[] nums) {
     int left = 0, right = 0, jumps = 0;
     while (right < nums.length - 1) {
-      int farthest = 0;
+      int farthest = right;
       for (int i = left; i <= right; i++) {
         farthest = Math.max(nums[i] + i, farthest);
       }
@@ -700,6 +700,66 @@ public class Misc {
     }
 
     return clipsUsed;
+  }
+
+  public int minRefuelStops(int target, int startFuel, int[][] stations) {
+    PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+    int fuel = startFuel, stops = 0, index = 0;
+
+    while (fuel < target) {
+
+      while (index < stations.length && stations[index][0] <= fuel) {
+        maxHeap.add(stations[index][1]);
+        index++;
+      }
+
+      if (maxHeap.isEmpty())
+        return -1;
+
+      fuel += maxHeap.poll();
+      stops++;
+    }
+
+    return stops;
+  }
+
+  int min_sprinklers(int gallery[], int n) {
+    List<int[]> sprinklers = new ArrayList<>();
+
+    // Step 1: Convert sprinklers into [start, end] format
+    for (int i = 0; i < n; i++) {
+      if (gallery[i] != -1) {
+        int left = Math.max(0, i - gallery[i]);
+        int right = Math.min(n - 1, i + gallery[i]);
+        sprinklers.add(new int[] { left, right });
+      }
+    }
+
+    // Step 2: Sort sprinklers by start position, prioritize larger end
+    sprinklers.sort((a, b) -> a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]);
+
+    int count = 0, covered = 0, i = 0;
+
+    // Step 3: Greedily cover the gallery
+    while (covered < n) {
+      int maxReach = -1;
+
+      // Select the sprinkler that extends the coverage the farthest
+      while (i < sprinklers.size() && sprinklers.get(i)[0] <= covered) {
+        maxReach = Math.max(maxReach, sprinklers.get(i)[1]);
+        i++;
+      }
+
+      // If we cannot extend coverage, return -1
+      if (maxReach == -1)
+        return -1;
+
+      // Move to the next uncovered position
+      covered = maxReach + 1;
+      count++;
+    }
+
+    return count;
   }
 
 }

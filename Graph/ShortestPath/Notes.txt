@@ -1,0 +1,172 @@
+1. When to Use Dijkstra’s Algorithm?
+Best for: Graphs with non-negative weights
+
+Why? Dijkstra uses a greedy approach with a priority queue (min-heap) to always expand the nearest unprocessed node.
+
+Time Complexity: O((V+E)logV) (using a binary heap)
+
+When to think of Dijkstra?
+
+General graphs may contain cycles (not necessarily a DAG).
+
+Weights are non-negative.
+
+You need the single-source shortest path efficiently.
+
+Example: Google Maps, where roads have non-negative distances.
+
+2. When to Use Bellman-Ford Algorithm?
+Best for: Graphs with negative weights (but no negative cycles)
+
+Why? Unlike Dijkstra, Bellman-Ford does V-1 relaxations over all edges, which allows it to handle negative weights.
+
+Time Complexity: O(VE)
+
+When to think of Bellman-Ford?
+
+The graph may have negative weights (which Dijkstra cannot handle).
+
+You need to detect negative cycles (Bellman-Ford does an extra pass to check for negative-weight cycles).
+
+Example: Currency exchange rate graphs, where arbitrage opportunities create negative cycles.
+
+3. When to Use Topological Sorting for Shortest Path?
+Best for: DAGs (Directed Acyclic Graphs)
+
+Why? A DAG has a natural ordering, so we can process nodes once in topological order, making it O(V + E) (faster than both Dijkstra and Bellman-Ford).
+
+When to think of Topo Sort?
+
+The graph is a DAG.
+
+You need the shortest path from a single source.
+
+Example: Task Scheduling, where tasks have dependencies and different durations.
+
+
+Final Thought: How to Choose?
+Graph has negative cycles?
+→ Bellman-Ford (to detect them).
+
+Graph has negative weights but no cycles?
+→ Bellman-Ford (Dijkstra fails with negative weights).
+
+Graph has non-negative weights and is not necessarily a DAG?
+→ Dijkstra (more efficient than Bellman-Ford).
+
+Graph is a DAG?
+→ Topological Sort (O(V + E)), the fastest method.
+
+
+When to Use Floyd-Warshall Algorithm?
+Best for: Finding shortest paths between all pairs of vertices
+
+Why? Unlike Dijkstra or Bellman-Ford (which solve single-source shortest path problems), Floyd-Warshall finds the shortest path between every pair of vertices in one run.
+
+Time Complexity: O(V^3)
+Space Complexity: O(V^2) (uses a matrix)
+
+Algorithm Type: Dynamic Programming
+
+When to Think of Floyd-Warshall?
+You need all-pairs shortest paths (instead of just from one source).
+
+The graph is dense O(v^3) is acceptable.
+
+The graph may have negative weights (but no negative cycles).
+
+Graph size is relatively small (e.g., 
+𝑉
+≤
+400
+V≤400).
+
+Example: Road networks between all cities (find the shortest route between every pair of cities).
+
+
+1️⃣ Shortest Path using Topological Sort (DAG)
+✅ Use when: The graph is a DAG (Directed Acyclic Graph).
+✅ Time Complexity: O(V+E)
+
+Problems:
+Shortest Path in a Directed Acyclic Graph
+
+Given a DAG and a source node, find the shortest path to all other nodes.
+
+Job Scheduling with Dependencies
+
+Each task has a duration, and dependencies exist between tasks. Find the minimum time to complete all tasks.
+
+Longest Path in a DAG (by negating edge weights)
+
+Modify the algorithm to find the longest path instead of the shortest.
+
+2️⃣ Dijkstra’s Algorithm (Greedy)
+✅ Use when: Graph has non-negative weights.
+✅ Time Complexity: O((V+E)logV) (with a priority queue).
+
+Problems:
+Single-Source Shortest Path (SSSP)
+
+Given a weighted graph and a source, find the shortest path to all other vertices.
+
+Example: Google Maps (Find shortest distance from one city to others).
+
+Network Delay Time (Leetcode 743)
+
+A signal is sent from a node and propagates through weighted edges. Find the time taken for all nodes to receive the signal.
+
+Cheapest Flights Within K Stops (Leetcode 787)
+
+Find the cheapest way to travel from a city A to B within K stops.
+
+Path with Minimum Effort (Leetcode 1631)
+
+A grid-based shortest path problem where movement cost is based on elevation difference.
+
+3️⃣ Bellman-Ford Algorithm (DP)
+✅ Use when: The graph has negative weights but no negative cycles.
+✅ Time Complexity: O(VE)
+
+Problems:
+Detect Negative Cycle
+
+If Bellman-Ford detects an improvement after V-1 iterations, there is a negative cycle.
+
+Find Shortest Path with Negative Weights
+
+Given a weighted graph with negative weights, find the shortest path.
+
+Currency Arbitrage Detection
+
+In a currency exchange network, a negative cycle indicates an arbitrage opportunity.
+
+Leetcode 787 - Cheapest Flights Within K Stops (Alternative Approach)
+
+Can also be solved using Bellman-Ford instead of Dijkstra.
+
+4️⃣ Floyd-Warshall Algorithm (DP)
+✅ Use when: All-pairs shortest paths are required.
+✅ Time Complexity:  O(v^3)
+Problems:
+All-Pairs Shortest Path
+
+Given a weighted graph, find the shortest paths between every pair of vertices.
+
+Transitive Closure of a Graph
+
+Compute if there exists a path between any two nodes.
+
+Find the City with the Smallest Number of Neighbors (Leetcode 1334)
+
+Find the city that can reach the fewest other cities within a given distance.
+
+Minimum Path between Two Nodes in a Graph
+
+Find the minimum path length between every pair of nodes.
+
+
+
+
+
+
